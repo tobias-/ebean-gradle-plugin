@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "io.ebean:ebean-gradle-plugin:11.10.1.youcruit"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.jvm" version '1.2.51'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'io.ebean'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.51"
+    compile "io.ebean:persistence-api:2.2.1"
+    compile "io.ebean:ebean:11.18.4"
+    testCompile "io.ebean:ebean-gradle-plugin:11.10.1.youcruit"
+    testCompile "io.ebean:ebean-agent:10.1.1"
+}
+
+ebean {
+    debugLevel = 1 //1 - 9
+}
+
+kapt {
+    generateStubs = true
+}
+
+compileKotlin {
+    kotlinOptions {
+        languageVersion = "1.2"
+        apiVersion = "1.2"
+        jvmTarget = "1.8"
+    }
+}
+        
